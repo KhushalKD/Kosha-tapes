@@ -166,7 +166,7 @@ h6,
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: rgba(15, 66, 41, .55);
+    background: rgba(15, 66, 41, .45);
     z-index: 1;
 }
 
@@ -268,7 +268,7 @@ h6,
 .facts,
 .quote {
     background-color: var(--dark);
-    background-image: linear-gradient(rgba(15, 66, 41, .35), rgba(15, 66, 41, .65)), url(../img/carousel-1.jpg);
+    background-image: linear-gradient(rgba(15, 66, 41, .35), rgba(15, 66, 41, .45)), url(../img/carousel-1.jpg);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
