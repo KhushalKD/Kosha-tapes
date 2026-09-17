@@ -816,36 +816,49 @@
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
                                     <label for="name">Your Name</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
                                     <label for="email">Your Email</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="subject" placeholder="Subject">
+                                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
                                     <label for="subject">Subject</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
+                                    <textarea class="form-control" placeholder="Leave a message here" id="message" name="message" style="height: 100px" required></textarea>
                                     <label for="message">Message</label>
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button id="waButton"
-                                        data-whatsapp-number="919566009791"
-                                        class="btn btn-primary py-3 px-4"
-                                        type="submit">
-                                    Send Message on WhatsApp
-                                </button>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <!-- WhatsApp button - parked for now, uncomment to bring it back.
+                                         js/contact-form.js picks it up automatically when it is present.
+                                    <button id="waButton"
+                                            data-whatsapp-number="919566009791"
+                                            class="btn btn-primary py-3 px-4"
+                                            type="button">
+                                        <i class="fab fa-whatsapp me-2"></i>Send on WhatsApp
+                                    </button>
+                                    -->
+                                    <button id="emailButton"
+                                            class="btn btn-primary py-3 px-4"
+                                            type="submit">
+                                        <i class="fa fa-envelope me-2"></i>Send on Email
+                                    </button>
+                                </div>
                             </div>
+                            <div id="formStatus" class="col-12 mb-0 text-muted" role="status" aria-live="polite"></div>
+                            <!-- Spam trap: hidden from people, only bots fill it in. -->
+                            <input type="text" id="website" name="website" class="d-none" tabindex="-1" autocomplete="off" aria-hidden="true">
                         </div>
                     </form>
                 </div>
@@ -950,51 +963,10 @@
     <script src="lib/isotope/isotope.pkgd.min.js"></script>
     <script src="lib/lightbox/js/lightbox.min.js"></script>
 
-    <script>
-        (function () {
-            const form = document.getElementById('contactForm');
-            const btn = document.getElementById('waButton');
-
-            if (!form || !btn) return;
-
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();
-
-                const phone = btn.getAttribute('data-whatsapp-number');
-
-                const name = document.getElementById('name')?.value.trim() || '';
-                const email = document.getElementById('email')?.value.trim() || '';
-                const subject = document.getElementById('subject')?.value.trim() || '';
-                const message = document.getElementById('message')?.value.trim() || '';
-
-                let finalMessage = '';
-
-                if (!name && !email && !subject && !message) {
-                    finalMessage =
-                        `Hi Kosha Tapes,
-
-                                                        I visited your website and I'm interested in your adhesive tape products. Please share more details.`;
-                } else {
-                    finalMessage =
-                        `Hi Kosha Tapes,
-
-                                                        Name: ${name || '-'}
-                                                        Email: ${email || '-'}
-                                                        Subject: ${subject || '-'}
-                                                        Message: ${message || '-'}
-
-                                                        ---
-                                                        Sent from the Kosha Tapes website`;
-                }
-
-                const url = `https://wa.me/${phone}?text=${encodeURIComponent(finalMessage)}`;
-                window.open(url, '_blank', 'noopener,noreferrer');
-            });
-        })();
-    </script>
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="js/contact-form.js"></script>
 </body>
 
 </html>

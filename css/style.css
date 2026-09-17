@@ -65,6 +65,29 @@ h6,
     color: var(--light);
 }
 
+/*
+    Bootstrap picked black text for the green primary button, and its hover
+    state goes lighter - so every green button turned black-on-pale-green on
+    hover. Darken to the brand green instead and keep the text light.
+*/
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.show > .btn-primary.dropdown-toggle {
+    color: var(--light);
+    background-color: var(--dark);
+    border-color: var(--dark);
+}
+
+/* Keeps the "Sending..." state on the contact form readable. */
+.btn-primary:disabled,
+.btn-primary.disabled {
+    color: var(--light);
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
 .btn-square {
     width: 38px;
     height: 38px;
